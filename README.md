@@ -9,6 +9,7 @@ Image size: raw: 15GB, using `docker --squash`: 7GB
 `docker build --force-rm -f Dockerfile.dev -t openhorizon/aarch64-tx2-face-classification-opencv3.3:v0.1 .`
 
 ## Pull container
+Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classification-opencv3.3/
 `docker pull openhorizon/aarch64-tx2-face-classification-opencv3.3:v0.1`
 
 ## Run
