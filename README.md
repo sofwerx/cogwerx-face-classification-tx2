@@ -8,6 +8,7 @@ Installs Python3, Tensorflow-gpu, OpenCV3.3 and supporting libraries
 Prereqs: openhorizon/aarch64/tx2/cudabase container image (CUDA libs in ubuntu xenial for TX2)
 Build time on native Jetson TX2: ~8 hours (better to pull the image) 
 Image size: raw: 15GB, using `docker --squash`: 7GB
+
 `docker build --force-rm -f Dockerfile.dev -t openhorizon/aarch64-tx2-face-classification-opencv3.3:v0.1 .`
 
 ## Pull container
