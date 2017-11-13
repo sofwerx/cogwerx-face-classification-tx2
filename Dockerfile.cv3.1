@@ -89,7 +89,7 @@ RUN cmake -D CMAKE_BUILD_TYPE=Release \
 RUN make -j5
 RUN make install
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf
-RUN ln -s /root/src/opencv/build/lib/python3/cv2.cpython-35m-aarch64-linux-gnu.so /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-aarch64-linux-gnu.so
+RUN cp /root/src/opencv/build/lib/python3/cv2.cpython-35m-aarch64-linux-gnu.so /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-aarch64-linux-gnu.so
 
 ### Install face classification
 RUN mkdir -p /root/src
@@ -97,12 +97,12 @@ WORKDIR /root/src
 RUN git clone https://github.com/oarriaga/face_classification
 # Replace examples with ones that access video1 (USB camera)
 COPY src/*.py face_classification/src/
+WORKDIR /root/src/face_classification/src
 
 ### Clean up (remove ~6GB space)
-#RUN rm -rf /var/cuda-repo-8-0-local/*.deb
-#RUN rm -rf /usr/local/cuda-8.0/doc/*
-#RUN rm -rf /root/src/opencv*
-#RUN rm -rf /root/src/jetsonhacks
-#RUN mv /usr/local/cuda-8.0/samples/2_Graphics/ /usr/local/cuda-8.0/
-#RUN rm -rf /usr/local/cuda-8.0/samples/*
-#RUN mv /usr/local/cuda-8.0/2_Graphics/ /usr/local/cuda-8.0/samples/
+RUN rm -rf /var/cuda-repo-8-0-local/*.deb
+RUN rm -rf /usr/local/cuda-8.0/doc/*
+RUN rm -rf /root/src/jetsonhacks
+RUN find /root/src/opencv/ -maxdepth 1 -type d \! -name "build" -not -path "/root/src/opencv/" | xargs rm -rf
+RUN find /usr/local/cuda-8.0/samples/ -iname "[13-9]*" -type d | xargs rm -rf
+RUN rm -rf /root/src/opencv/build/modules/
