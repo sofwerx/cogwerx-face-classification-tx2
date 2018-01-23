@@ -18,5 +18,7 @@ Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classific
 
 ## Run
 `xhost + && docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp:/tmp --privileged openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC /bin/bash`
+
 `cd face_classification/src`   # if not already in that dir
+
 `python3 video_emotion_color_demo.py`
