@@ -5,7 +5,7 @@ Build for Jetson TX2, JetPack 3.2-RC
 Installs Python3, Tensorflow-gpu, OpenCV3.1 (or OpenCV3.3) and supporting libraries
 
 ## Build
-Prereqs: openhorizon/aarch64-tx2-cudabase container image (CUDA libs in ubuntu xenial for TX2)
+Prereqs: openhorizon/aarch64-tx2-cudabase:<version> container image (CUDA libs in ubuntu xenial for TX2)
 Build time on native Jetson TX2: ~8 hours (better to pull the image) 
 Image size: 9GB using `docker --squash` (raw: 15GB)
 
