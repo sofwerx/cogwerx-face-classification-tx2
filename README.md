@@ -24,7 +24,7 @@ Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classific
 
 ### Emotion and gender recognition
 <div align='center'>
-  <img src='https://github.com/oarriaga/face_classification/raw/master/images/robocup_team.png' width='400px'>
+  <img src='https://github.com/oarriaga/face_classification/raw/master/images/robocup_team.png' width='600px'>
 </div>
 
 ### Real-time demo
