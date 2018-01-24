@@ -74,7 +74,7 @@ COPY cv3.1/common.hpp /root/src/opencv/modules/cudev/include/opencv2/cudev/
 RUN mkdir -p /root/src/opencv/build
 WORKDIR /root/src/opencv/build
 RUN pip3 install --no-cache-dir numpy
-#RUN apt-get install -y python-pip && pip2 install --upgrade pip && pip2 install numpy
+
 RUN cmake -D CMAKE_BUILD_TYPE=Release \
       -D INSTALL_C_EXAMPLES=OFF \
       -D CUDA_FAST_MATH=ON \
