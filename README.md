@@ -12,7 +12,7 @@ Image size: 9GB using `docker --squash` (raw: 15GB)
 `docker build --force-rm -f Dockerfile.dev -t openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC .`
 
 ## Pull container
-Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC/
+Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classification-opencv3.1/
 
 `docker pull openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC`
 
