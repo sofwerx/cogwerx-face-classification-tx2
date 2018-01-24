@@ -20,3 +20,16 @@ Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classific
 `xhost + && docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp:/tmp --privileged openhorizon/aarch64-tx2-face-classification-opencv3.3:v0.1 /bin/bash`
 `cd face_classification/src`
 `python3 video_emotion_color_demo.py`
+
+
+## Emotion and gender recognition
+<div align='center'>
+  <img src='https://github.com/oarriaga/face_classification/raw/master/images/robocup_team.png' width='400px'>
+</div>
+
+## Real-time demo
+<div align='center'>
+  <img src='https://github.com/oarriaga/face_classification/raw/master/images/color_demo.gif' width='400px'>
+</div>
+
+Images and code reference: https://github.com/oarriaga/face_classification
