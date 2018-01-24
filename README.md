@@ -1,15 +1,16 @@
 ## General
 This repo contains a dockerfile and src files for orriaga's [face-classification](https://github.com/oarriaga/face_classification) routines
 
-Build for Jetson TX2, JetPack 3.2, using L4T 28.
-Installs Python3, Tensorflow-gpu, OpenCV3.3 (or OpenCV3.1) and supporting libraries
+Build for Jetson TX2, JetPack 3.2-RC
+Installs Python3, Tensorflow-gpu, OpenCV3.1 (or OpenCV3.3) and supporting libraries
 
 ## Build
-Prereqs: openhorizon/aarch64-tx2-cudabase container image (CUDA libs in ubuntu xenial for TX2)
+Prereqs: openhorizon/aarch64-tx2-cudabase:<version> container image (CUDA libs in ubuntu xenial for TX2)
 Build time on native Jetson TX2: ~8 hours (better to pull the image) 
 Image size: 9GB using `docker --squash` (raw: 15GB)
 
-`docker build --force-rm -f Dockerfile.dev -t openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC .`
+
+`docker build --force-rm -f Dockerfile.cv3.1-JP3.2RC -t openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC .`
 
 ## Pull container
 Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classification-opencv3.1/

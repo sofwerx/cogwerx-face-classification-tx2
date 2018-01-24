@@ -1,7 +1,7 @@
 ## Base image
 # cudabase image is aarch64/ubuntu, with NVIDIA CUDA libs, L4T28 JetPack31
 # Build with docker --squash (experimental)
-FROM openhorizon/aarch64-tx2-cudabase
+FROM openhorizon/aarch64-tx2-cudabase:JetPack3.2-RC
 
 ## tensorflow backend installation
 RUN apt-get update
@@ -41,7 +41,7 @@ RUN pip3 install --no-cache-dir graphviz pydot pandas Pillow
 RUN export CC=h5cc
 RUN HDF5_DIR=/usr/lib/aarch64-linux-gnu/hdf5/serial/ pip3 install --no-cache-dir h5py
 
-# Build OpenCV, and install scipy, keras
+## Build OpenCV, and install scipy, keras
 WORKDIR /root/src/
 RUN git clone https://github.com/Itseez/opencv.git
 RUN git clone https://github.com/Itseez/opencv_contrib.git
@@ -61,12 +61,25 @@ WORKDIR /root/src
 RUN git clone https://github.com/oarriaga/face_classification
 # Replace examples with ones that access video1 (USB camera)
 COPY src/*.py face_classification/src/
+WORKDIR /root/src/face_classification/src
+
+# Hack to work with old cuda/cudnn libs (TEMPORARY FIX until Tensorflow/Keras support CUDA9/CUDNN7)
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64/
+RUN curl http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb -so /tmp/cuda-repo-l4t_arm64.deb && dpkg -i /tmp/cuda-repo-l4t_arm64.deb
+RUN apt-get update && apt-get install -y cuda-toolkit-8.0
+RUN curl http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/libcudnn6_6.0.21-1+cuda8.0_arm64.deb -so /tmp/libcudnn_arm64.deb && dpkg -i /tmp/libcudnn_arm64.deb
+RUN curl http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/libcudnn6-dev_6.0.21-1+cuda8.0_arm64.deb -so /tmp/libcudnn-dev_arm64.deb && dpkg -i /tmp/libcudnn-dev_arm64.deb
 
 ## Clean up (remove ~6GB space)
+RUN apt autoremove && apt clean
+RUN rm -rf /tmp/*.deb
 RUN rm -rf /var/cuda-repo-8-0-local/*.deb
 RUN rm -rf /usr/local/cuda-8.0/doc/*
-RUN rm -rf /root/src/opencv*
+RUN rm -rf /var/cuda-repo-9-0-local/*.deb
+RUN rm -rf /usr/local/cuda-9.0/doc/*
+RUN find /root/src/opencv/ -maxdepth 1 -type d \! -name "build" -not -path "/root/src/opencv/" | xargs rm -rf
+RUN rm -rf /root/src/opencv/build/modules/
 RUN rm -rf /root/src/jetsonhacks
-RUN mv /usr/local/cuda-8.0/samples/2_Graphics/ /usr/local/cuda-8.0/
-RUN rm -rf /usr/local/cuda-8.0/samples/*
-RUN mv /usr/local/cuda-8.0/2_Graphics/ /usr/local/cuda-8.0/samples/
+RUN find /usr/local/cuda-9.0/samples/ -iname "[13-9]*" -type d | xargs rm -rf
+RUN find /usr/local/cuda-8.0/samples/ -iname "[13-9]*" -type d | xargs rm -rf
+
