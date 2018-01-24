@@ -1,7 +1,7 @@
 ## General
 This repo contains a dockerfile and src files for orriaga's [face-classification](https://github.com/oarriaga/face_classification) routines
 
-Build for Jetson TX2, JetPack 3.1, using L4T 28.
+Build for Jetson TX2, JetPack 3.2, using L4T 28.
 Installs Python3, Tensorflow-gpu, OpenCV3.3 (or OpenCV3.1) and supporting libraries
 
 ## Build
