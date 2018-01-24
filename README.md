@@ -22,12 +22,12 @@ Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classific
 `python3 video_emotion_color_demo.py`
 
 
-## Emotion and gender recognition
+### Emotion and gender recognition
 <div align='center'>
   <img src='https://github.com/oarriaga/face_classification/raw/master/images/robocup_team.png' width='400px'>
 </div>
 
-## Real-time demo
+### Real-time demo
 <div align='center'>
   <img src='https://github.com/oarriaga/face_classification/raw/master/images/color_demo.gif' width='400px'>
 </div>
