@@ -1,4 +1,2 @@
-Dockerfile.Intu
-Dockerfile.Intu.old
-Dockerfile.cv3.1-JP3.2RC-Intu
-config
+*.old
+config/*

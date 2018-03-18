@@ -69,8 +69,8 @@ RUN git cherry-pick 24dbb
 WORKDIR /root/src
 RUN git clone https://github.com/opencv/opencv_extra.git --branch 3.1.0
 # Copy over files with updated settings for CUDA9.0 / remove outdated arch's (2.x)
-COPY cv3.1/*.cmake /root/src/opencv/cmake/
-COPY cv3.1/common.hpp /root/src/opencv/modules/cudev/include/opencv2/cudev/
+COPY cmake/*.cmake /root/src/opencv/cmake/
+COPY cmake/common.hpp /root/src/opencv/modules/cudev/include/opencv2/cudev/
 RUN mkdir -p /root/src/opencv/build
 WORKDIR /root/src/opencv/build
 RUN pip3 install --no-cache-dir numpy
