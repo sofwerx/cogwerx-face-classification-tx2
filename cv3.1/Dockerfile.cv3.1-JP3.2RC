@@ -120,6 +120,7 @@ RUN rm -rf /var/cuda-repo-9-0-local/*.deb
 RUN rm -rf /usr/local/cuda-9.0/doc/*
 RUN rm -rf /root/src/jetsonhacks
 RUN find /root/src/opencv/ -maxdepth 1 -type d \! -name "build" -not -path "/root/src/opencv/" | xargs rm -rf
-RUN rm -rf /root/src/opencv/build/modules/
+RUN rm -rf /root/src/opencv && rm -rf /root/src/opencv_extra && rm -rf /root/src/face_classification/.git
 RUN find /usr/local/cuda-9.0/samples/ -iname "[13-9]*" -type d | xargs rm -rf
 RUN find /usr/local/cuda-8.0/samples/ -iname "[13-9]*" -type d | xargs rm -rf
+

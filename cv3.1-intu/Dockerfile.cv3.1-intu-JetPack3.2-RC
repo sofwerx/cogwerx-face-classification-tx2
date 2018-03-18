@@ -5,8 +5,13 @@
 FROM openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC
 
 ## Install ig0r's face classification with intu bindings
-RUN pip3 install --no-cache-dir ws4py
+RUN apt-get update && apt-get install -y ffmpeg && pip3 install --no-cache-dir ws4py
 RUN mkdir -p /root/src/ig0r
 WORKDIR /root/src/ig0r
 RUN git clone --branch intu https://github.com/ig0r/face_classification.git
+WORKDIR /root/src/ig0r/face_classification/src
+
+# Copy our modified code
+COPY src/*.cfg face_classification/src/
+COPY src/face*.py face_classification/src/
 WORKDIR /root/src/ig0r/face_classification/src
