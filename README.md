@@ -10,12 +10,12 @@ Build time on native Jetson TX2: ~8 hours (better to pull the image)
 Image size: 9GB using `docker --squash` (raw: 15GB)
 
 
-`docker build --force-rm -f Dockerfile.cv3.1-JP3.2RC -t openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC .`
+`docker build --force-rm -f Dockerfile.cv3.1-JP3.2RC -t openhorizon/aarch64-tx2-face-classification-opencv3.1 .`
 
 ## Pull container
 Container image: https://hub.docker.com/r/openhorizon/aarch64-tx2-face-classification-opencv3.1/
 
-`docker pull openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC`
+`docker pull openhorizon/aarch64-tx2-face-classification-opencv3.1`
 
 ## Run
 `xhost + && docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --cap-add=ALL --ipc=host -v /dev:/dev --privileged openhorizon/aarch64-tx2-face-classification-opencv3.1:JetPack3.2-RC python3 video_emotion_color_demo.py`

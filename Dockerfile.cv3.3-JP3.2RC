@@ -1,7 +1,7 @@
 ## Base image
 # cudabase image is aarch64/ubuntu, with NVIDIA CUDA libs, L4T28 JetPack31
 # Build with docker --squash (experimental)
-FROM openhorizon/aarch64-tx2-cudabase:JetPack3.2-RC
+FROM openhorizon/aarch64-tx2-cudabase
 
 ## tensorflow backend installation
 RUN apt-get update
